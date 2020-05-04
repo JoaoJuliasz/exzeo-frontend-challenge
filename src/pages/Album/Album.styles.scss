@@ -1,0 +1,29 @@
+.music-page-container {
+    padding-top: 20px;
+
+    .dynamic-page-img {
+        width: 235px;
+        border-radius: 5px ;
+    }
+    .infos-title {
+        margin: 8px 0 0;
+        font-size: 14px; 
+    }
+
+    .infos {
+        margin-top: 4px;
+    }
+
+    .album-rights {
+        bottom: 0;
+        position: absolute;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+}
+
+

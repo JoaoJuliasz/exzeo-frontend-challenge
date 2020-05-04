@@ -1,0 +1,19 @@
+.home-container{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+
+    @media(max-width: 680px) {
+        grid-template-columns: none !important;
+      }
+      
+      @media(min-width: 681px) and (max-width: 780px) {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      
+      @media(min-width: 780px) and (max-width: 1024px) {
+        grid-template-columns: 1fr 1fr 1fr!important;
+      }
+
+}

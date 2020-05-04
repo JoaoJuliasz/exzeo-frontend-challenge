@@ -1,26 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch, Link } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Album from './pages/Album/Album.page';
+import NotFound from './pages/NotFound.page';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            albums: [],
+            isLoading: true,
+            error: false,
+        }
+    }
+    componentDidMount() {
+        fetch('https://itunes.apple.com/us/rss/topalbums/limit=100/json')
+            .then(res => res.json())
+            .then(data => this.setState({
+                albums: data.feed.entry,
+                isLoading: false
+            }, () => console.warn(this.state.albums)))
+            .catch(err => this.setState({
+                error: true,
+                isLoading: false,
+            },
+                () => console.error(err)
+            ))
+    }
+    render() {
+        const { albums, isLoading, error } = this.state;
+        return (
+            <>
+                <Link to='/'><h1 className='text-center'>Joao's albums</h1></Link>
+                <Switch>
+                    <Route exact path='/' component={() =>
+                        <Home albums={albums}
+                            isLoading={isLoading}
+                            error={error}
+                        />
+                    } />
+                    <Route path='/album/:id' render={routerProps => this.renderalbums(routerProps)} />
+                    <Route path='/*' component={NotFound} />
+                </Switch>
+            </>
+        )
+
+    }
+    renderalbums = (routerProps) => {
+        const { albums, error } = this.state;
+        let albumId = routerProps.match.params.id;
+        let foundAlbum = albums.find(album => album.id.attributes['im:id'] === albumId)
+        return foundAlbum ? <Album album={foundAlbum} error={error} /> : null
+    }
 }
-
 export default App;

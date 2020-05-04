@@ -1,0 +1,26 @@
+.card-container {
+    padding: 10px;
+      
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    p {
+        color: #fff;
+    }
+
+    p:first-of-type {
+        font-size: 15px !important;
+    }
+    p:nth-of-type(2) {
+        font-size: 14px !important;
+    }
+    p:nth-of-type(3) {
+        font-size: 13px !important;
+    }
+}
