@@ -31,6 +31,7 @@ class App extends React.Component {
     }
     return (
       <div className='text-center'>
+        <h4>Use the Search Bar to find your album by its name, artirst/band or category</h4>
         <SearchBar onChange={this.onChange}/>
         <div className='home-container'>
           <Albums filteredalbums={filteredalbums} />

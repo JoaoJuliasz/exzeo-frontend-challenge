@@ -40,14 +40,14 @@ class App extends React.Component {
                             error={error}
                         />
                     } />
-                    <Route path='/album/:id' render={routerProps => this.renderalbums(routerProps)} />
+                    <Route path='/album/:id' render={routerProps => this.renderAlbums(routerProps)} />
                     <Route path='/*' component={NotFound} />
                 </Switch>
             </>
         )
 
     }
-    renderalbums = (routerProps) => {
+    renderAlbums = (routerProps) => {
         const { albums, error } = this.state;
         let albumId = routerProps.match.params.id;
         let foundAlbum = albums.find(album => album.id.attributes['im:id'] === albumId)
