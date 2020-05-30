@@ -9,7 +9,7 @@ const Album = ({ album, error }) => {
     }
     return (
         <div className='text-center music-page-container'>
-            <img className='dynamic-page-img album-img' src={album['im:image'][2].label} style={{}} alt="music" />
+            <img className='dynamic-page-img album-img' src={album['im:image'][2].label} alt="music" />
             <p className='infos-title'>Album Name</p>
             <h2 className='infos'>{album['im:name'].label}</h2>
             <p className='infos-title'>Artist/Band Name</p>

@@ -6,9 +6,6 @@ import './Albums.scss';
 class Albums extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            flipped: false,
-        }
     }
     render() {
         const { filteredalbums } = this.props;
